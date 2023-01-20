@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body {
+            font-family: sans-serif;
+        }
+
+        label {
+            cursor: pointer;
+        }
+        
+    </style>
+</head>
+<body>
+
+    <form action="#" method="get"  target="_blank" 
+    autocomplete="off">
+      <p>O meu Formulario</p>
+
+        <p>
+          <label for="nome">Nome:</label>
+            <input type="text" id="nome" 
+            name="nome" placeholder="Seu Nome">
+        </p>
+
+        <p>
+              <label for="dev 1">Sou um Dev</label>
+              <input type="checkbox" id="dev" name="dev 1" value="sim"> <br>
+
+              <label for="dev 2">Sou um Dev</label>
+              <input type="checkbox" id="dev 2" name="dev 2" value="sim"> <br>
+
+              <label for="dev 3">Sou um Dev</label>
+              <input type="checkbox" id="dev 3" name="dev 3" value="sim"> <br>
+        </p>
+
+        <p>
+            Genero: <br>
+            <label for="femenino">femenino</label>
+            <input type="radio" id="femenino" name="Genero" value="femenino"> <br>
+
+            <label for="masculino">masculino</label>
+            <input type="radio" id="masculino" name="Genero" value="masculino"> <br>
+
+            <label for="Outro_outra">Outro ou Outra</label>
+            <input type="radio" id="Genero" name="Outro ou Outra" value="Outro_outra"> <br>
+      </p>
+
+      <p>
+        <label for="date">Date:</label>
+          <input type="date" id="date" 
+          name="date" placeholder="date" value="2023-06-22">
+      </p>
+
+      <p>
+        <label for="datetime">Date:</label>
+          <input type="datetime-local" id="datetime" 
+          name="datetime" placeholder="datetime" value="2023-06-22T20:00">
+      </p>
+
+      <p>
+        <label for="time">Date:</label>
+          <input type="time" id="time" 
+          name="time" placeholder="time" value="20:00:01">
+      </p>
+      <p>
+        <label for="cor">Cor Preferida:</label>
+          <input type="color" id="Cor" 
+          name="cor" value="#ff0000">
+      </p>
+
+      <p>
+        <label for="email">Seu e-mail:</label>
+          <input type="email" id="email" 
+          name="email" placeholder="ex.: email@email.com">
+      </p>
+
+      <p>
+        <label for="file">Sua foto:</label>
+          <input type="file" id="file" name="file"
+          accept=".png, .svg, image/*">
+      </p>
+
+      <p>
+        <label for="number">number:</label>
+          <input type="number" id="number" 
+          name="number" placeholder="Digite um Número" min="10" max="50" step="5">
+      </p>
+
+        <P>
+            <button type="submit">Reset</button>
+            <button type="submit">Enviar</button>
+        </P>
+
+        <p>
+            <label for="password">Sua senha:</label>
+              <input type="password" id="password" 
+              name="password" placeholder="Digite sua senha">
+          </p>
+
+          <p>
+            <label for="renge">renge:</label>
+              <input type="range" id="renge" 
+              name="renge" min="0" max="10" step="2">
+
+              <input type="range" list="tickmarks">
+
+              <datalist id="tickmarks">
+                <option value="0" label="0%">
+                <option value="10">   
+                <option value="20"> 
+                <option value="30"> 
+                <option value="40"> 
+                <option value="50"> 
+                <option value="60"> 
+                <option value="70"> 
+                <option value="80">  
+                <option value="90"> 
+                <option value="100" label="100%">0                    
+              </datalist>
+          </p>
+
+    </form>
+
+</body>
+</html>
