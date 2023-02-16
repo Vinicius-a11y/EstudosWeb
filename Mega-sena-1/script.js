@@ -1,24 +1,54 @@
 var state = {board: [], currentGame: [], saveGames: []};
-function start() {
-    addNumberToGame(1);
-    addNumberToGame(2);
-    addNumberToGame(3);
-    addNumberToGame(4);
-    addNumberToGame(5);
-    
-    saveGame();
 
-    console.log(state.currentGame);
-    console.log(state.savedGame);
+function start() {
+    createBoard();
+    newGame();
+
+    console.log(state.board);
+}
+
+function createBoard() {
+    state.board = [];
+
+    for (var i = 1; i <= 60; i++) {
+        state.board.push(i);
+    }
+}
+
+function newGame() {
+    resetGame();
+    render();
+}
+
+function render() {
+    renderBoard();
+}
+
+function renderBoard() {
+    var divBoard = document.querySelector('#megasena-board');
+    divBoard.innerHTML = '';
+
+    var ulNumbers = document.createElement('ul');
+
+    for (var i = 0; i < state.board.length; i++) {
+        var currentNumber = state.board[i];
+
+        var liNumber = document.createElement('li');
+        liNumber.textContent = currentNumber;
+
+        ulNumbers.appendChild(liNumber);
+    }
+
+    divBoard.appendChild(ulNumbers);
 }
 
 function addNumberToGame(numberToAdd) {
-    if (numberToAdd < 1 || numberToAdd > 68) {
+    if (numberToAdd < 1 || numberToAdd > 60) {
         console.error('Numero invalido' , numberToAdd);
         return;
     }
 
-    if (state.currentGame.length >= 6){
+    if (state.currentGame.length >= 6) {
         console.error('o jogo ja esta completo.');
         return;
     }
@@ -41,11 +71,6 @@ function removeNumberFromGame(numberToRemove) {
 }
 
 function isNumberInGame(numberToCheck) {
-   // if (state.currentGame.includes(numberToCheck)){
-      //return true;
-  //}
-
-  //  return false;
 
   return state.currentGame.includes(numberToCheck);
 }
@@ -60,4 +85,9 @@ function savedGame () {
 function isGameComplete() {
     return state.currentGame.length === 6;
 }
+
+    function resetGame() {
+        state.currentGame = [];
+    }
 start();
+
