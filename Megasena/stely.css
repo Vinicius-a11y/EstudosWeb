@@ -18,7 +18,7 @@ button {
     text-align: center;
 }
 
-.numbers {
+.number {
     display: inline-block;
     margin: 10px;
     border: 1px solid gray;

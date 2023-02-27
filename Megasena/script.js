@@ -110,7 +110,27 @@ function createNewGameButton() {
     return button;
 }
 
-function renderSaveGames() {}
+function renderSaveGames() {
+    var divSaveGames = document.querySelector('#megasena-save-games');
+    divSaveGames.innerHTML = '';
+
+    if(state.saveGames.length === 0) {
+        divSaveGames.innerHTML = '<p>Nenhum jogo salvo</p>';
+    } else {
+        var ulSaveGame = document.createElement('ul')
+
+        for (var i = 0; i < state.saveGames.length; i++) {
+            var currentGame = state.saveGames[i];
+
+        var liGame = document.createElement('li');
+        liGame.textContent = currentGame.join(', ');
+
+        ulSaveGame.appendChild(liGame);
+        }  
+
+        divSaveGames.appendChild(ulSaveGame);
+    }
+}
 
 function addNumberToGame(numberToAdd) {
     if (numberToAdd < 1 || numberToAdd > 60) {
