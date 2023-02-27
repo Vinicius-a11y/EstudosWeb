@@ -32,14 +32,20 @@ function renderBoard() {
     divBoard.innerHTML = '';
 
     var ulNumbers = document.createElement('ul');
+    ulNumbers.classList.add('numbers');
 
     for (var i = 0; i < state.board.length; i++) {
         var currentNumber = state.board[i];
 
         var liNumber = document.createElement('li');
         liNumber.textContent = currentNumber;
+        liNumber.classList.add('number')
 
         liNumber.addEventListener('click', handleNumberClick);
+
+        if (isNumberInGame(currentNumber)) {
+            liNumber.classList.add('selected-number');
+        }
 
         ulNumbers.appendChild(liNumber);
     }
@@ -58,6 +64,7 @@ function handleNumberClick(event) {
     }
 
     console.log(state.currentGame);
+    render();
 }
 
 function renderButtons() {
@@ -65,8 +72,33 @@ function renderButtons() {
     divButtons.innerHTML = '';
 
     var buttonNewGame = createNewGameButton();
+    var buttonRandomGame = createRandomGameButton();
+    var buttonSaveGame = createSaveGameButton();
 
     divButtons.appendChild(buttonNewGame);
+    divButtons.appendChild(buttonRandomGame);
+    divButtons.appendChild(buttonSaveGame);
+
+
+}
+
+function createSaveGameButton() {
+    var button = document.createElement('button');
+    button.textContent = 'Salvar jogo';
+    button.disabled = isGameComplete();
+
+    button.addEventListener('click', saveGame);
+
+    return button;
+}
+
+function createRandomGameButton() {
+    var button = document.createElement('button');
+    button.textContent = 'Jogo aleatorio';
+
+    button.addEventListener('click', randomGame);
+
+    return button;
 }
 
 function createNewGameButton() {
@@ -113,11 +145,15 @@ function isNumberInGame(numberToCheck) {
   return state.currentGame.includes(numberToCheck);
 }
 
-function savedGame () {
-    if (!isGameComplete()){
+function saveGame () {
+    if (!isGameComplete()) {
         console.error('O jogo não esta completo!');
+        return;
     }
     state.saveGames.push(state.currentGame);
+    newGame();
+
+    console.log(state.saveGames);
 }
 
 function isGameComplete() {
@@ -127,5 +163,18 @@ function isGameComplete() {
     function resetGame() {
         state.currentGame = [];
     }
+
+function randomGame() {
+    resetGame();
+
+
+    while (!isGameComplete()) {
+    var randomNumber = Math.ceil(Math.random() * 60);
+    addNumberToGame(randomNumber)
+    }
+    console.log(state.currentGame);
+    render();
+}
+
 start();
 
